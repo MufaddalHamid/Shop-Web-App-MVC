@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AdminDashboard</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Admin Dashboard</h2>
+        <div class="list-group">
+            <a href="@Url.Action("ItemListing", "Item")" class="list-group-item list-group-item-action">
+                <i class="fa fa-file-alt"></i> Item (Document)
+            </a>
+            <a href="@Url.Action("OrderListing", "Order")" class="list-group-item list-group-item-action">
+                <i class="fa fa-shopping-cart"></i> Orders
+            </a>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

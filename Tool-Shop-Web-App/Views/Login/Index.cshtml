@@ -1,0 +1,82 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin Login</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Login</h2>
+        <form id="adminLoginForm" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <!-- Bootstrap Modal -->
+        <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="responseModalLabel">Response</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Response message will be inserted here -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#adminLoginForm').on('submit', function(event) {
+            event.preventDefault();
+            var formData = {
+                UserName: $('#username').val(),
+                Password: $('#password').val()
+            };
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("CheckAdminUser", "Login")',
+                data: formData,
+                success: function(response) {
+                    if (response.success) {
+                        // Show success message in Bootstrap modal
+                        $('#responseModal .modal-body').text(response.message);
+                        $('#responseModal').modal('show');
+                        // Redirect to Admin/Index after showing the message
+                        $('#responseModal').on('hidden.bs.modal', function () {
+                            window.location.href = '@Url.Action("Index", "Admin")';
+                        });
+                    } else {
+                        // Show error message in Bootstrap modal
+                        $('#responseModal .modal-body').text(response.message);
+                        $('#responseModal').modal('show');
+                    }
+                }
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>
