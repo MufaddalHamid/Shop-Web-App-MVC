@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.Common;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace Tool_Shop_Web_App.Common
 {
     public class Connection:IDisposable
     {
         public void Dispose() { }
-        private string connectionString = ConfigurationManager.AppSettings["LocalShopDB"];
+        private string connectionString = System.Configuration.ConfigurationManager.AppSettings["LocalShopDB"];
 
         public DataTable FetchDataTableFromQuery(string query, Dictionary<string, object> parameters)
         {

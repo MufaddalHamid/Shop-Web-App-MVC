@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\Business\\Shop-Web-App\\Shop-Web-App.csproj": {}
+    "C:\\Users\\mufad\\source\\repos\\Tool-Shop-Web-App\\Shop-Web-App.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\Business\\Shop-Web-App\\Shop-Web-App.csproj": {
+    "C:\\Users\\mufad\\source\\repos\\Tool-Shop-Web-App\\Shop-Web-App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\Business\\Shop-Web-App\\Shop-Web-App.csproj",
+        "projectUniqueName": "C:\\Users\\mufad\\source\\repos\\Tool-Shop-Web-App\\Shop-Web-App.csproj",
         "projectName": "Shop-Web-App",
-        "projectPath": "D:\\Projects\\Business\\Shop-Web-App\\Shop-Web-App.csproj",
-        "packagesPath": "C:\\Users\\soura\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\Business\\Shop-Web-App\\obj\\",
+        "projectPath": "C:\\Users\\mufad\\source\\repos\\Tool-Shop-Web-App\\Shop-Web-App.csproj",
+        "packagesPath": "C:\\Users\\mufad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mufad\\source\\repos\\Tool-Shop-Web-App\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\soura\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\mufad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -42,6 +49,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
