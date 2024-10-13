@@ -147,5 +147,78 @@ namespace Tool_Shop_Web_App.UserMode
             }
             return Status;
         }
+
+
+        public string AddCart(CartDM NeCart)
+        {
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@Id", NeCart.Id),
+                new SqlParameter("@Name", NeCart.Name),
+                new SqlParameter("@Email", NeCart.Email),
+                new SqlParameter("@MobileNo", NeCart.MobileNo),
+                new SqlParameter("@WhatsappNumber", NeCart.WhatsappNumber),
+                new SqlParameter("@Whatsapp", NeCart.Whatsapp),
+                new SqlParameter("@Promotional", NeCart.Promotional)
+            };
+                using (Connection objconnection = new Connection())
+                {
+
+                    DataTable dt = objconnection.ExecuteStoreProcedure("AddNewCart", parameters);
+                    return dt.Rows[0][0].ToString();
+                }
+            }
+            catch (Exception ex) 
+            {
+                return null;
+            }
+        }
+
+        public string AddItemToCart(string ItemId, int Qty, decimal Price,string CartId)
+        {
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+                   {
+                        new SqlParameter("@ItemId",ItemId),
+                        new SqlParameter("@Qty", Qty),
+                        new SqlParameter("@CartId",CartId),
+                        new SqlParameter("@Price",Price),
+                      
+                   };
+                using (Connection conn = new Connection()) 
+                {
+                   DataTable dt =  conn.ExecuteStoreProcedure("SaveItemInCart", parameters);
+                   return dt.Rows[0][0].ToString();
+                }
+
+            }
+            catch (Exception ex) {
+                return null;
+            }
+        }
+
+        public string SaveCartOrder(string  CartId)
+        {
+            try
+            {
+                SqlParameter[] parameters = new SqlParameter[]
+               {
+                new SqlParameter ("@Id",CartId)
+               };
+
+                using (Connection objconnection = new Connection()) {
+
+                  DataTable dt =  objconnection.ExecuteStoreProcedure("PlaceOrder", parameters);
+                  return dt.Rows[0][0].ToString();
+                } 
+
+            }
+            catch (Exception ex)
+            {
+                return "Could Not Place Your Order";
+            }
+        }
     }
 }

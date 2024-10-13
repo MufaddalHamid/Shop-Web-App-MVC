@@ -72,18 +72,18 @@ namespace Tool_Shop_Web_App.Controllers
         }
 
         [HttpPost]
-        public ActionResult SaveItem(ItemDM save)
+        public ActionResult SaveItem(ItemDM SaveItem)
         {
             try
             {
                 DataTable result = new DataTable();
                 using (UserServices objuserServices = new UserServices())
                 {
-                    if (objuserServices.ItemExists(save.Code) && save.Id == Guid.Empty)
+                    if (objuserServices.ItemExists(SaveItem.Code) && SaveItem.Id == Guid.Empty)
                     {
                         return Json(new { success = true, status = false, message = "Item not Saved as Item with code already Exists" });
                     }
-                    result = objuserServices.SaveItem(save);
+                    result = objuserServices.SaveItem(SaveItem);
                 }
                 if (result.Rows.Count > 0)
                 {
@@ -114,7 +114,6 @@ namespace Tool_Shop_Web_App.Controllers
                         return Json(new { success = true, status = true, message = "Item Not Deleted!!" });
                     }
                 }
-
 
             }
             catch (Exception ex)

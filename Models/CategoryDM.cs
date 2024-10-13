@@ -11,5 +11,7 @@ namespace Tool_Shop_Web_App.Models
         public string Code { get; set; }
         public string Name { get; set; }
 
+        public byte[] Image { get; set; }
+
     }
 }
